@@ -10,7 +10,7 @@ async function downloadThumb(videoID) {
     responseType: 'stream'
   })
   .then(response => {
-    const path = Path.resolve("../../../frontend/src/assets",`${videoID}.jpg`);
+    const path = "../../ThumbnailDownloader/frontend/src/assets/" + `${videoID}.jpg`;
     const writer = fs.createWriteStream(path);
     response.data.pipe(writer);
     return response.status;

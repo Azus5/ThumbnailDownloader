@@ -7,7 +7,7 @@ const routes = express.Router();
 
 routes.get('/download/:videoID', async function (req, res) {
     let params = req.params;
-    let path = __dirname + `/services/images/${params.videoID}.jpg`;
+    let path = "../frontend/src/assets/" + `${params.videoID}.jpg`;
     const statusCode = await downloadThumb(params.videoID);
     console.log('statusCode: ' + statusCode);
     if (statusCode) res.download(path);
