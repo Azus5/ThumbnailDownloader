@@ -1,3 +1,30 @@
+.container {
+    width: 100%;
+    max-width: 1120;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.invalid-url {
+    margin-top: 10px;
+    color: red;
+}
+
+.miniature {
+    height: 250px;
+    width: 250px;
+    margin-top: 25px;
+}
+
+h1 {
+    word-spacing: 7px;
+}
+
 h1 span.first-char {
     font-size: 33pt;
     
@@ -6,3 +33,49 @@ h1 span.first-char {
 h1 span.green-part {
     color: #1ED600;
 }
+
+form {
+    display: flex;
+    justify-items: center;
+}
+
+form input {
+    width: 440px;
+    height: 47px;
+    border: 1px solid rgba(0, 0, 0, 0.582);
+    border-radius: 15px 0 0 15px;
+    text-decoration: none;
+    padding-left: 13px;
+}
+
+form button {
+    height: 47px;
+    border: 1px solid rgba(0, 0, 0, 0.582);
+    border-radius: 0 15px 15px 0;
+    margin-left: 5px;
+    background-color: #D600C0;
+    padding: 0 11px;
+}
+
+form button svg {
+    color: #fff;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+form input:focus::placeholder {
+    color: transparent;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align: center;
+  }
+::-moz-placeholder { /* Firefox 19+ */
+    text-align: center;
+  }
+:-ms-input-placeholder { /* IE 10+ */
+    text-align: center;
+  }
+:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+  }
