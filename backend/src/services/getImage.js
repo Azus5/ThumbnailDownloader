@@ -1,26 +1,25 @@
 const axios = require('axios');
-const fs = require('fs');
 const Path = require('path');
+const fs = require('fs');
+let responseStatus;
 
-
-async function downloadThumb(videoID) {
-  axios({
+async function downloadThumb(videoID, quality) {
+  await axios({
     method: 'get',
-    url: `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`,
+    url: `https://img.youtube.com/vi/${videoID}/${quality}.jpg`,
     responseType: 'stream'
   })
   .then(response => {
-    const path = "../../ThumbnailDownloader/frontend/src/assets/" + `${videoID}.jpg`;
+    const path = Path.join(__dirname, 'images', `${quality} - ${videoID}.jpg`);
     const writer = fs.createWriteStream(path);
     response.data.pipe(writer);
-    return response.status;
+    responseStatus = response.status
   })
   .catch(err => {
-    console.log('Failed to get imagem, error: ' + err.message);
-    return false;
+    console.log('Failed to get image, error: ' + err.message);
+    responseStatus = err.response.status;
   })
-
-  return true;
+  return responseStatus;
 }
 
 module.exports = downloadThumb;
